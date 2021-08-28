@@ -14,8 +14,9 @@ class CreateSousCatDomaineTable extends Migration
     public function up()
     {
         Schema::create('sous_cat_domaine', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments("id_sous_dom");
+            $table->string("intitule_sous_dom");
+            $table->unsignedInteger("domaine_metier");
         });
     }
 
