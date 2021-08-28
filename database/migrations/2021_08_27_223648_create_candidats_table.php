@@ -14,8 +14,16 @@ class CreateCandidatsTable extends Migration
     public function up()
     {
         Schema::create('candidats', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments("id_candidat");
+            $table->string("nom");
+            $table->string("prenom");
+            $table->boolean("recherche")->default(0);
+            $table->string("email");
+            $table->date("date_naissance");
+            $table->string("photo_de_profil");
+            $table->UnsignedInteger("niv_etude");
+            $table->string("LinkedIn");
+            $table->string("region");
         });
     }
 

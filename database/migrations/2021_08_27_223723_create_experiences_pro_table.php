@@ -14,8 +14,14 @@ class CreateExperiencesProTable extends Migration
     public function up()
     {
         Schema::create('experiences_pro', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments("id_experience_pro");
+            $table->string("intitulé_expe");
+            $table->string("description_expe");
+            $table->unsignedInteger("domaine_metier");
+            $table->date("date_deb_expe");
+            $table->date("date_fin_expe");
+            $table->UnsignedInteger("candidat");
+
         });
     }
 

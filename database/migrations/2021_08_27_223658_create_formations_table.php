@@ -14,8 +14,14 @@ class CreateFormationsTable extends Migration
     public function up()
     {
         Schema::create('formations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments("id_forma");
+            $table->string("intitulé_forma");
+            $table->string("description_forma");
+            $table->unsignedInteger("domaine_metier");
+            $table->date("date_deb_forma");
+            $table->date("date_fin_forma");
+            $table->UnsignedInteger("candidat");
+
         });
     }
 

@@ -14,8 +14,8 @@ class CreateDomaineMetierTable extends Migration
     public function up()
     {
         Schema::create('domaine_metier', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments("id_dom");
+            $table->string("intitule_dom");
         });
     }
 

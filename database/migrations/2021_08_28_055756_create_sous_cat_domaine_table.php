@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNivEtudesTable extends Migration
+class CreateSousCatDomaineTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateNivEtudesTable extends Migration
      */
     public function up()
     {
-        Schema::create('niv_etudes', function (Blueprint $table) {
+        Schema::create('sous_cat_domaine', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateNivEtudesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niv_etudes');
+        Schema::dropIfExists('sous_cat_domaine');
     }
 }
