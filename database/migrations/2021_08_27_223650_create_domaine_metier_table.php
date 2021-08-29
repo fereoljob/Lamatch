@@ -13,7 +13,7 @@ class CreateDomaineMetierTable extends Migration
      */
     public function up()
     {
-        Schema::create('domaine_metier', function (Blueprint $table) {
+        Schema::create('domaine_metiers', function (Blueprint $table) {
             $table->increments("id_dom");
             $table->string("intitule_dom");
         });

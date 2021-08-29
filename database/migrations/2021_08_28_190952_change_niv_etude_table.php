@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
-class CreateSousCatDomaineTable extends Migration
+class ChangeNivEtudeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +14,8 @@ class CreateSousCatDomaineTable extends Migration
      */
     public function up()
     {
-        Schema::create('sous_cat_domaines', function (Blueprint $table) {
-            $table->increments("id_sous_dom");
-            $table->string("intitule_sous_dom");
-            $table->unsignedInteger("domaine_metier");
+        Schema::table('niv_etudes',function(Blueprint $table){
+
         });
     }
 
@@ -27,6 +26,6 @@ class CreateSousCatDomaineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sous_cat_domaine');
+        //
     }
 }

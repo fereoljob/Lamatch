@@ -19,11 +19,11 @@ class CreateCandidatsTable extends Migration
             $table->string("prenom");
             $table->boolean("recherche")->default(0);
             $table->string("email");
-            $table->date("date_naissance");
-            $table->string("photo_de_profil");
-            $table->UnsignedInteger("niv_etude");
-            $table->string("LinkedIn");
-            $table->string("region");
+            $table->date("date_naissance")->nullable();
+            $table->string("photo_de_profil")->nullable();
+            $table->UnsignedInteger("niv_etude")->nullable();
+            $table->string("LinkedIn")->nullable();
+            $table->string("region")->nullable();
         });
     }
 

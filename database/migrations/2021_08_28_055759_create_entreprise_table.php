@@ -13,15 +13,18 @@ class CreateEntrepriseTable extends Migration
      */
     public function up()
     {
-        Schema::create('entreprise', function (Blueprint $table) {
+        Schema::create('entreprises', function (Blueprint $table) {
             $table->increments("id_entre");
             $table->string("nom_entre");
-            $table->string("logo_entre");
-            $table->date("date_crea");
-            $table->sting("site_web");
+            $table->string("logo_entre")->nullable();
+            $table->date("date_crea")->nullable();
+            $table->string("site_web")->nullable();
             $table->string("email");
-            $table->string("presentation");
-            $table->string("valeurs");
+            $table->string("presentation")->nullable();
+            $table->string("valeurs")->nullable();
+            $table->integer("effectifs")->nullable();
+            $table->unsignedInteger("domaine_metier")->nullable();
+            $table->string("region")->nullable();
             
         });
     }
