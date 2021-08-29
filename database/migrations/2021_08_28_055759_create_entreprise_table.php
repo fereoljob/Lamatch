@@ -21,11 +21,8 @@ class CreateEntrepriseTable extends Migration
             $table->string("site_web")->nullable();
             $table->string("email");
             $table->string("presentation")->nullable();
-            $table->string("valeurs")->nullable();
             $table->integer("effectifs")->nullable();
-            $table->unsignedInteger("domaine_metier")->nullable();
-            $table->string("region")->nullable();
-            
+            $table->unsignedInteger("domaine_metier")->nullable();      
         });
     }
 

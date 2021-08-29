@@ -46,7 +46,7 @@
                         </li>
 
                         <li>
-                            <a title="Mon Profil" href="profil?{{ "-".$user->statut }}" class="menu-link button">
+                            <a title="Mon Profil" href="profil" class="menu-link button">
                                 ⚙ Mon Profil
                             </a>
                         </li>

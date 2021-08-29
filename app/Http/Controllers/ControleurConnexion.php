@@ -43,7 +43,8 @@ class ControleurConnexion extends Controller
             $candidats = DB::table("candidats")->get()->count();
             $entreprises = DB::table("entreprises")->get()->count();
             $statistiques = DB::table("stats")->first();
-            $data = ["candidats"=>$candidats,"entreprises"=>$entreprises,"statistiques"=>$statistiques];
+            $user = DB::table('utilisateurs')->where('id_utilisateur',session('LoggedUser'))->first();
+            $data = ["candidats"=>$candidats,"entreprises"=>$entreprises,"statistiques"=>$statistiques,"user"=>$user];
             return view("Accueil/accueil",$data);
         }
         else

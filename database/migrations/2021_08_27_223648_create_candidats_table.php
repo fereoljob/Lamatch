@@ -23,7 +23,6 @@ class CreateCandidatsTable extends Migration
             $table->string("photo_de_profil")->nullable();
             $table->UnsignedInteger("niv_etude")->nullable();
             $table->string("LinkedIn")->nullable();
-            $table->string("region")->nullable();
         });
     }
 
