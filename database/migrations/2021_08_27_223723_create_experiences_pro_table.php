@@ -15,9 +15,10 @@ class CreateExperiencesProTable extends Migration
     {
         Schema::create('experiences_pro', function (Blueprint $table) {
             $table->increments("id_experience_pro");
-            $table->string("intitulé_expe");
+            $table->string("intitule_expe");
             $table->string("description_expe");
-            $table->unsignedInteger("domaine_metier");
+            $table->string("domaine_metier");
+            $table->string("sous_dom_cat");
             $table->date("date_deb_expe");
             $table->date("date_fin_expe");
             $table->UnsignedInteger("candidat");

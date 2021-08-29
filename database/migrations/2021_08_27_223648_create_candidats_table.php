@@ -21,7 +21,7 @@ class CreateCandidatsTable extends Migration
             $table->string("email");
             $table->date("date_naissance")->nullable();
             $table->string("photo_de_profil")->nullable();
-            $table->UnsignedInteger("niv_etude")->nullable();
+            $table->string("niv_etude")->nullable();
             $table->string("LinkedIn")->nullable();
         });
     }

@@ -22,7 +22,7 @@ class CreateEntrepriseTable extends Migration
             $table->string("email");
             $table->string("presentation")->nullable();
             $table->integer("effectifs")->nullable();
-            $table->unsignedInteger("domaine_metier")->nullable();      
+            $table->string("domaine_metier");      
         });
     }
 

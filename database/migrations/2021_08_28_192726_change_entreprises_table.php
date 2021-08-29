@@ -14,7 +14,6 @@ class ChangeEntreprisesTable extends Migration
     public function up()
     {
         Schema::table("entreprises",function (Blueprint $table){
-            $table->foreign("domaine_metier")->references("id_dom")->on("domaine_metiers");
         });
     }
 

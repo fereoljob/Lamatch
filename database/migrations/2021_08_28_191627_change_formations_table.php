@@ -14,7 +14,6 @@ class ChangeFormationsTable extends Migration
     public function up()
     {
         Schema::table("formations",function (Blueprint $table){
-            $table->foreign("domaine_metier")->references("id_dom")->on("domaine_metiers");
             $table->foreign("candidat")->references("id_candidat")->on("candidats");
         });
     }

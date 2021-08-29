@@ -15,10 +15,10 @@ class CreateCompetencesTable extends Migration
     {
         Schema::create('competences', function (Blueprint $table) {
             $table->increments("id_compe");
-            $table->string("intitulé_compe");
-            $table->unsignedInteger("domaine_metier");
-            $table->string("sous_cat_domaine");
-
+            $table->string("intitule_compe");
+            $table->string("domaine_metier");
+            $table->string("sous_dom_cat");
+            $table->UnsignedInteger("candidat");
         });
     }
 
