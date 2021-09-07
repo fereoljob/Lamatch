@@ -38,10 +38,12 @@ function editionRegion()
         }   
     }
 }
-function traitementAjouForma()
+function traitementAjouForma(tabmodifer)
 {
-    let ajoutformaBut = document.querySelector(".AjoutFormaBut");
-        ajoutformaBut.addEventListener('click',function(e)
+
+    let modifFormabouts = document.querySelector(".AjoutFormaBut");
+    $.each(modifFormabouts,function(key,value){
+        value.addEventListener('click',function(e)
         {
             e.preventDefault();
             let verif = document.querySelector("div[class='formation_nouvelle'] div[class*='leform']");
@@ -229,18 +231,26 @@ function traitementAjouForma()
                         ErrorSpan.remove();
                         boutAjou.remove();
                         boutAnnuler.remove();
-                        let boutMod = document.createElement("button");
-                        boutMod.innerHTML = "✏ Modifier";
-                        boutMod.classList.add("button","blue1");
                         let boutSup = document.createElement("button");
                         boutSup.innerHTML = "🚽 Supprimer";
-                        boutSup.classList.add("button","danger","ms-3");
-                        divcolbou.append(boutMod);
+                        let id_ch_fo = changementP.childElementCount+1;
+                        boutSup.classList.add("button","danger","ms-3",id_ch_fo);
+                        boutSup.addEventListener('click',function(e){
+                            e.preventDefault();
+                            let id = e.target.classList[3];
+                            divgene.style.display = "none";
+                            tabmodifer[id]="";
+                        });
                         divcolbou.append(boutSup);
+                        let obj = {"candidat":le_candi,"intitule_forma":titlespan.innerHTML,"date_debut":datedebut.nodeValue
+                        ,"date_fin":datefin.nodeValue,"level":niv.nodeValue,"ville":tower.nodeValue,"pays":country.nodeValue,
+                        "domain":domaine.nodeValue,"description":descri.nodeValue,"numero_form":id_ch_fo};
+                        tabmodifer[id_ch_fo]=obj;
                     }
                 });
                 let divformu = document.querySelector(".formation_nouvelle");
                 divformu.replaceChild(divgene,divformu.childNodes[0]);
             }
         });
+    });
 }

@@ -87,4 +87,47 @@ class ControleurClient extends Controller
         }
         return redirect("profil");
     }
+    function Majforma(Request $requete)
+    {
+        if(!empty($requete->tabmodifer))
+        {
+            $modif = $requete->tabmodifer;
+            $infoforma = explode("~-",$modif);
+            $succesModtab = [];
+            foreach($infoforma as $value)
+            {
+                if($value!="")
+                {
+                    $Modobj = json_decode($value);
+                    $idcandidat = $Modobj->candidat;
+                    $int_form = $Modobj->intitule_forma;
+                    $date_deb = $Modobj->date_debut;
+                    $date_fin = $Modobj->date_fin;
+                    $ville = $Modobj->ville;
+                    $pays = $Modobj->pays;
+                    $dom = $Modobj->domain;
+                    $niv = $Modobj->level;
+                    $descri = $Modobj->description;
+                    $successMod = DB::table("formations")->insert(["intitule_forma"=>$int_form,'description_forma'=>$descri,
+                    'domaine'=>$dom,'niv_etude'=>$niv,'ville_forma'=>$ville,'pays_forma'=>$pays,'date_deb_forma'=>$date_deb
+                    ,'date_fin_forma'=>$date_fin,'candidat'=>$idcandidat]);
+                    $succesModtab[]=$successMod;
+                }
+            } 
+            return response()->json($succesModtab);
+        }
+        else
+        {
+            $succesModtab = ["reponse"=>true];
+            return response()->json($succesModtab);
+        }
+    }
+    function SuppForma(Request $requete)
+    {
+        if($requete->idforma)
+        {  
+            $result = DB::table("formations")->where("id_forma","=",$requete->idforma)->delete();
+            return response()->json($result);
+        }
+    }
 }

@@ -163,7 +163,7 @@
                 </div>
             </div>
         </form>
-        <form action="Majformations" method="post">
+        <form action="" method="">
             <section id="studies" class="container">
                 <div class="row">
                     <div class="col-12 mb-5">
@@ -182,20 +182,22 @@
                             </p>
         
                             <div class="study-infos infos-inline">
-                                <span class="date"> {{ $formation->date_deb_forma." - ".$formation->date_fin_forma}}</span>
+                                <span class="date"> 📅 @php
+                                    echo date_format(date_create($formation->date_deb_forma),"d/m/Y")." - ".date_format(date_create($formation->date_fin_forma),"d/m/Y");
+                                @endphp</span>
                                 <span class="level">👨‍🎓 {{$formation->niv_etude }}</span>
                                 <span class="city">🚩 {{ $formation->ville_forma." - ".$formation->pays_forma }}</span>
                                 <span class="domain">💼 {{ $formation->domaine }}</span>
                             </div>
         
                             <p class="description mt-5">
-                                {{ $formation->description }}
+                                {{ $formation->description_forma }}
                             </p>
         
                             <div class="row">
-                                <div class="col-12 actions">
-                                    <a href="" class="button blue1">✏ Modifier</a>
-                                    <a href="" class="button danger">🚽 Supprimer</a>
+                                <div class="col-12 actions" id={{ $formation->id_forma }} >
+                                    <a href="" class="button AjoutFormaBut blue1">✏ Modifier</a>
+                                    <a href="" class="button danger supforma">🚽 Supprimer</a>
                                 </div>
                             </div>
                         </div>
@@ -217,12 +219,13 @@
             </section>
             <div>   
                 <div class="validation">
-                    <input type="submit" value="💾 Enregistrer" title="Enregistrer mes modifs !" class=" me-5 button success">
+                    <input type="submit" value="💾 Enregistrer" title="Enregistrer mes modifs !" class=" formation_candi me-5 button success">
                 </div>
             </div>
         </form>
             
         <form action="MajExpe" method="post">
+            @csrf
             <section id="experiences" class="container">
                 <div class="row">
                     <div class="col-12 mb-5">
@@ -271,9 +274,22 @@
         </form>
     
     </main><!-- #main -->
+    @php
+        echo "<script>";
+        echo "let le_candi=";
+        echo json_encode($candidat->id_candidat);
+        echo ";";
+        echo "let les_forma=";
+        echo json_encode($formations);
+        echo ";";
+        echo "</script>";
+    @endphp
     <script>
-        editionCompe();
+        $(document).ready(function()
+        {
+            editionCompe();
         editionRegion();
+        let tabmodifer = [];
         let accueil = document.querySelector("#accueil");
         let matching = document.querySelector("#matching");
         let profil = document.querySelector("#profil");
@@ -352,7 +368,49 @@
             }
         });
         //formation
-        traitementAjouForma();
+        traitementAjouForma(tabmodifer);
+        $(".formation_candi").click(function(e){
+            e.preventDefault();
+            let chaine = "";
+            for(let tab in tabmodifer)
+            {
+                chaine+=JSON.stringify(tabmodifer[tab])+"~-";
+            }
+            $.ajax({
+                type:"GET",
+                url:"/Enregistrerforma/?tabmodifer="+chaine,
+                success: function(res){
+                    if(res)
+                    {
+                        console.log(res);
+                        tabmodifer = [];
+                        window.location.reload();
+                    }
+                    else
+                    {
+                        alert("Echec de l'enregistrement");
+                    }
+                }
+            });
+        });
+        let suppriboutons = $(".supforma");
+       $.each(suppriboutons,function(key,value){
+        value.addEventListener('click',function(e){
+            e.preventDefault();
+            let id_formation = e.target.parentNode.attributes["id"].nodeValue;
+            $.ajax({
+                type:"GET",
+                url:"/SupprimerForma/?idforma="+id_formation,
+                success:function(res){
+                    if(res)
+                    {
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+       });
+    });
     </script>
 </div>
 @endsection

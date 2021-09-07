@@ -20,3 +20,5 @@ Route::get("Accueil",[ControleurConnexion::class,"Accueil"])->middleware("estCon
 Route::get("deconnecter",[ControleurConnexion::class,"logout"]);
 Route::get("profil",[ControleurClient::class,"profil"])->middleware("estConnecte");
 Route::post("MajInfosPersos",[ControleurClient::class,"MajInfosPersos"])->middleware("estConnecte");
+Route::get('Enregistrerforma',[ControleurClient::class,"Majforma"])->middleware("estConnecte");
+Route::get('SupprimerForma',[ControleurClient::class,"SuppForma"])->middleware("estConnecte");
