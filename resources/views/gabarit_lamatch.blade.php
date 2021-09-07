@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/header.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/home.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/profile-candidate.css" type="text/css" media="all">
+    <script type="text/javascript" src="js/fonctions.js"></script>
 </head>
 
 <body class="simple-page">

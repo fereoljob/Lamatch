@@ -15,9 +15,9 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->increments("id_stat");
-            $table->string("info_stats");
-            $table->float("matchings");
-            $table->float("recrutements");
+            $table->string("info_stats")->nullable();
+            $table->float("matchings")->nullable();
+            $table->float("recrutements")->nullable();
         });
     }
 

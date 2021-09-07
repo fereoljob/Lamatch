@@ -19,3 +19,4 @@ Route::post("connecter",[ControleurConnexion::class,"verifUser"]);
 Route::get("Accueil",[ControleurConnexion::class,"Accueil"])->middleware("estConnecte");
 Route::get("deconnecter",[ControleurConnexion::class,"logout"]);
 Route::get("profil",[ControleurClient::class,"profil"])->middleware("estConnecte");
+Route::post("MajInfosPersos",[ControleurClient::class,"MajInfosPersos"])->middleware("estConnecte");

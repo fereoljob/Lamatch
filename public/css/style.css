@@ -452,7 +452,10 @@ Desktop Breakpoints: > 1200px ($minWidthXl)
     border-radius: 5px;
     text-decoration: none;
 }
-
+.validation
+{
+    float:right !important;
+}
 .button.white {
     background-color: #fff;
     color: var(--primary-color);

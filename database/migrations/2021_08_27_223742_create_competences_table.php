@@ -17,7 +17,7 @@ class CreateCompetencesTable extends Migration
             $table->increments("id_compe");
             $table->string("intitule_compe");
             $table->string("domaine_metier");
-            $table->string("sous_dom_cat");
+            $table->string("sous_dom_cat")->nullable();
             $table->UnsignedInteger("candidat");
         });
     }
