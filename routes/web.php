@@ -29,3 +29,4 @@ Route::get("ValiderModifExpe",[ControleurClient::class,"ValiderModifExpe"])->mid
 Route::post("MajInfosPersosEntre",[ControleurClient::class,"MajInfosPersosEntre"])->middleware("estConnecte");
 Route::get("matching",[controleurClient::class,"matching"])->middleware("estConnecte");
 Route::post('detail_entre',[ControleurClient::class,"details_entre"])->middleware("estConnecte");
+Route::post('details_candi',[ControleurClient::class,"details_candi"])->middleware("estConnecte");

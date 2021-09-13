@@ -380,6 +380,9 @@ class ControleurClient extends Controller
             $valeurs_candi = DB::table("candidats")
             ->join("valeurs_candi","candidats.id_candidat","=","valeurs_candi.id_candidat")
             ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
+            $competences = DB::table("candidats")
+            ->join("competences","candidats.id_candidat","=","competences.candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
             $lesentreprises = DB::table("entreprises")->get();
             //critere (domaine:40 points maxi, valeurs:30point maxi region:30points maxi en fonction du dégré de correspondance)
             $tab_domaine = [];
@@ -387,6 +390,13 @@ class ControleurClient extends Controller
             foreach ($formations as $key=>$value)
             {
                 if(!(ControleurClient::appartient($tab_domaine,$formations[$key]->domaine,null)))
+                {
+                    array_push($tab_domaine,$value->domaine);
+                }
+            }
+            foreach ($competences as $key=>$value)
+            {      
+                if(!(ControleurClient::appartient($tab_domaine,$competences[$key]->domaine_metier,null)))
                 {
                     array_push($tab_domaine,$value->domaine);
                 }
@@ -444,7 +454,7 @@ class ControleurClient extends Controller
 
         else if($user->statut=="Entreprise")
         {
-            $entreprise = DB::table("entreprise")->where("email",$user->email)->first();
+            $entreprise = DB::table("entreprises")->where("email",$user->email)->first();
             $valeurs_entre = DB::table("entreprises")
                 ->join("valeurs_entre","entreprises.id_entre","=","valeurs_entre.id_entre")
                 ->where("entreprises.id_entre","=",$entreprise->id_entre)->get();
@@ -473,6 +483,13 @@ class ControleurClient extends Controller
                 foreach ($formations as $key=>$value)
                 {      
                     if(!(ControleurClient::appartient($tab_domaine,$formations[$key]->domaine,null)))
+                    {
+                        array_push($tab_domaine,$value->domaine);
+                    }
+                }
+                foreach ($competences as $key=>$value)
+                {      
+                    if(!(ControleurClient::appartient($tab_domaine,$competences[$key]->domaine_metier,null)))
                     {
                         array_push($tab_domaine,$value->domaine);
                     }
@@ -514,8 +531,9 @@ class ControleurClient extends Controller
                 $tab_correspondance[$candidat->id_candidat]["candidat"]=$candidat;
                 $tab_correspondance[$candidat->id_candidat]["regions_candi"] = $regions_candi;
                 $tab_correspondance[$candidat->id_candidat]["competences"]=$competences;
+                $tab_correspondance[$candidat->id_candidat]["domaine_candi"]=$tab_domaine;
             }
-            $data["tab_entreprises_match"]=$tab_correspondance;
+            $data["tab_candidats_match"]=$tab_correspondance;
            
             return view("Matching/matching-company",$data);
         }
@@ -537,6 +555,32 @@ class ControleurClient extends Controller
             ->where("entreprises.id_entre","=",$entreprise->id_entre)->get();
             $data = ["entreprise"=>$entreprise,"valeurs_entre"=>$valeurs_entre,"regions"=>$regions];
             return view('Details/detail_entre',$data);
+        }
+    }
+    function details_candi(Request $requete)
+    {
+        if($requete->id_candidat)
+        {
+            $candidat = DB::table("candidats")->where("id_candidat","=",$requete->id_candidat)->first();
+            $competences=DB::table("candidats")
+            ->join("competences","candidats.id_candidat","=","competences.candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)
+            ->get();
+            $formations=DB::table("candidats")
+            ->join("formations","candidats.id_candidat","=","formations.candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
+            $experiences=DB::table("candidats")
+            ->join("experiences_pro","candidats.id_candidat","=","experiences_pro.candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
+            $regions=DB::table("candidats")
+            ->join("regions_candi","candidats.id_candidat","=","regions_candi.id_candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
+            $valeurs_candi = DB::table("candidats")
+            ->join("valeurs_candi","candidats.id_candidat","=","valeurs_candi.id_candidat")
+            ->where("candidats.id_candidat","=",$candidat->id_candidat)->get();
+            $data=["candidat"=>$candidat,"valeurs_candi"=>$valeurs_candi,"formations"=>$formations,"experiences"=>$experiences,"regions"=>$regions,"competences"=>$competences];
+            return view('Details/detail_candi',$data);
+
         }
     }
 }

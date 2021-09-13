@@ -61,7 +61,7 @@
         
                                                 <li class="regions-targeted">
                                                     🚩 Recherche en : @foreach ($item["regions_entre"] as $item2)
-                                                        {{ "-".$item2->nom_region }}
+                                                        {{ "-".$item2->nom_region." " }}
                                                     @endforeach
                                                 </li>
                                             </ul>
