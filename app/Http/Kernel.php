@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'estClient'=>\App\Http\Middleware\estClient::class,
         'estConnecte'=> \App\Http\Middleware\verifAuthentification::class,
         'estDejaConnecte'=> \App\Http\Middleware\estDejaConnecte::class,
         'estAdmin'=>\App\Http\Middleware\estAdmin::class,

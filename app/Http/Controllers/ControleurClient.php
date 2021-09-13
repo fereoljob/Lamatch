@@ -45,10 +45,6 @@ class ControleurClient extends Controller
             $data = ["entreprise"=>$entreprise,"valeurs_entre"=>$valeurs_entre,"regions"=>$regions];
             return view('Profil/profil-company',$data);
         }
-        else
-        {
-
-        }
     }
     function MajInfosPersos(Request $requete)
     {
@@ -367,6 +363,10 @@ class ControleurClient extends Controller
     }
     function matching(Request $requete)
     {
+        $stat = DB::table("stats")->first();
+        $nombre_matching = $stat->matchings;
+        $nombre_matching +=1;
+        DB::table("stats")->where("id_stat","=",$stat->id_stat)->update(["matchings"=>$nombre_matching]);
         $user = DB::table('utilisateurs')->where('id_utilisateur',session('LoggedUser'))->first();
         if($user->statut=="Candidat")
         {

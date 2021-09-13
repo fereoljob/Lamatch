@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class estAdmin
+class estClient
 {
     /**
      * Handle an incoming request.
@@ -18,9 +18,10 @@ class estAdmin
     public function handle(Request $request, Closure $next)
     {
         $user = DB::table('utilisateurs')->where('id_utilisateur',session("LoggedUser"))->first();
-        if($user->statut!="Admin")
+        if($user->statut=="Admin")
         {
-            return back()->with("Echec","Accès restreints aux membres administrateurs");
+           
+            return back()->with("Echec","Fonction non disponible pour le role Admin");
         }
         return $next($request);
     }

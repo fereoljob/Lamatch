@@ -29,6 +29,11 @@
 </head>
 
 <body class="simple-page">
+    @if (Session::get('Echec'))
+    <div class="alert alert-danger text-center">
+        {{ Session::get('Echec') }}
+    </div>
+    @endif
     <header id="site-header" class="container pt-5">
         <div class="row">
             <div class="col-3">
@@ -74,13 +79,13 @@
 
                     <ul class="navbar-items d-flex">
                         <li>
-                            <a title="Gérer les employeurs" href="admin/companies.html" id="AdEntre" class="menu-link admin button black">
+                            <a title="Gérer les employeurs" href="gestion_company" id="AdEntre" class="menu-link admin button black">
                                 Gérer les employeurs
                             </a>
                         </li>
 
                         <li>
-                            <a title="Gérer les candidats" href="admin/candidates.html" id="AdCandi" class="menu-link admin button black">
+                            <a title="Gérer les candidats" href="gestion_candidates" id="AdCandi" class="menu-link admin button black">
                                 Gérer les candidats
                             </a>
                         </li>
@@ -101,6 +106,6 @@
             </div>
         </div>
     </footer>
-
+   
 </body>
 </html>
