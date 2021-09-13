@@ -74,7 +74,7 @@
         <section id="actions" class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <a href="matching-candidate.html" class="button success">
+                    <a href="matching" class="button success">
                         Je lance le Matching ! ⚡
                     </a>
                 </div>

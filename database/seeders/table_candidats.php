@@ -1,0 +1,119 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+class table_candidats extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table("candidats")->insert([
+            [
+                "nom"=>"ROGER",
+                "prenom"=>"Jean-Eudes",
+                "email"=>"jean-eudes@gmail.com"
+            ],
+            [
+                "nom"=>"BICHON",
+                "prenom"=>"Zakaria",
+                "email"=>"zakariadu44@gmail.com"
+            ],
+            [
+                "nom"=>"LA BRANCHE",
+                "prenom"=>"Marie-Ange",
+                "email"=>"marie-ange@free.fr"
+            ],
+            [
+                "nom"=>"DE MONACO",
+                "prenom"=>"Géraldine",
+                "email"=>"geraldine@monaco.com"
+            ],
+            [
+                "nom"=>"CHARO",
+                "prenom"=>"Matuidi",
+                "email"=>"charo.matuidi@gmail.com"
+            ],
+            [
+                "nom"=>"GUOGE",
+                "prenom"=>"Matéo",
+                "email"=>"matguoge@gmail.com"
+            ],
+            [
+                "nom"=>"RAMTAH",
+                "prenom"=>"Mohamed",
+                "email"=>"mohamed@gmail.com"
+            ],
+            [
+                "nom"=>"LEROUX",
+                "prenom"=>"Leslie",
+                "email"=>"leslie@gmail.com"
+            ],
+            [
+                "nom"=>"ADJAMAGBO",
+                "prenom"=>"salma",
+                "email"=>"salma@gmail.com"
+            ],
+            [
+                "nom"=>"BRULLON",
+                "prenom"=>"Audrey",
+                "email"=>"audreybrullon@gmail.com"
+            ],
+            [
+                "nom"=>"FOUASSON",
+                "prenom"=>"Jason",
+                "email"=>"jasonfouasson@gmail.com"
+            ],
+            [
+                "nom"=>"LEROUX",
+                "prenom"=>"Killian",
+                "email"=>"killian@lamacompta.co"
+            ],
+            [
+                "nom"=>"POTENCIER",
+                "prenom"=>"Fabien",
+                "email"=>"fabienyear@symfony.com"
+            ],
+            [
+                "nom"=>"YOU",
+                "prenom"=>"Evan",
+                "email"=>"evant.you@vue.js"
+            ],
+            [
+                "nom"=>"LERDORF",
+                "prenom"=>"Rasmus",
+                "email"=>"lesdorf@msn.com"
+            ],
+            [
+                "nom"=>"DUNGLAS",
+                "prenom"=>"Kevin",
+                "email"=>"dunglas@gmail.com"
+            ],
+            [
+                "nom"=>"EICH",
+                "prenom"=>"Brendan",
+                "email"=>"brendan-eich@outlook.com"
+            ],
+            [
+                "nom"=>"GATES",
+                "prenom"=>"Bill",
+                "email"=>"biil@gates.com"
+            ],
+            [
+                "nom"=>"MUSK",
+                "prenom"=>"Elon",
+                "email"=>"elon.mush@yahoo.com"
+            ],
+            [
+                "nom"=>"JOB",
+                "prenom"=>"Fereol",
+                "email"=>"job.fereol@email.com"
+            ]
+        ]);
+    }
+}

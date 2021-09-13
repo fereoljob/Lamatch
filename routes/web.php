@@ -22,3 +22,10 @@ Route::get("profil",[ControleurClient::class,"profil"])->middleware("estConnecte
 Route::post("MajInfosPersos",[ControleurClient::class,"MajInfosPersos"])->middleware("estConnecte");
 Route::get('Enregistrerforma',[ControleurClient::class,"Majforma"])->middleware("estConnecte");
 Route::get('SupprimerForma',[ControleurClient::class,"SuppForma"])->middleware("estConnecte");
+Route::get("ValiderModif",[Controleurclient::class,"ValiderModif"])->middleware("estConnecte");
+Route::get('SupprimerExpe',[ControleurClient::class,"SupprimerExpe"])->middleware("estConnecte");
+Route::get("EnregistrerExpe",[ControleurClient::class,"EnregistrerExpe"])->middleware("estConnecte");
+Route::get("ValiderModifExpe",[ControleurClient::class,"ValiderModifExpe"])->middleware("estConnecte");
+Route::post("MajInfosPersosEntre",[ControleurClient::class,"MajInfosPersosEntre"])->middleware("estConnecte");
+Route::get("matching",[controleurClient::class,"matching"])->middleware("estConnecte");
+Route::post('detail_entre',[ControleurClient::class,"details_entre"])->middleware("estConnecte");

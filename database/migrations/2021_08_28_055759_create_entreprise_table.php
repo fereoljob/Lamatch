@@ -20,7 +20,7 @@ class CreateEntrepriseTable extends Migration
             $table->date("date_crea")->nullable();
             $table->string("site_web")->nullable();
             $table->string("email");
-            $table->string("presentation")->nullable();
+            $table->longText("presentation")->nullable();
             $table->integer("effectifs")->nullable();
             $table->string("domaine_metier");      
         });

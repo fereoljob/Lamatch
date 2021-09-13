@@ -14,47 +14,47 @@
             <section id="intro" class="container">
                 <div class="row">
                     <div class="col-5 photo">
-                        <div class="img-wrapper card p-0">
-                            <img src="https://burst.shopifycdn.com/photos/portrait-young-man-smiling.jpg?width=1000&format=pjpg&exif=0&iptc=0" class="img-fluid" alt="">
-                        </div>
+                        <div class="img-wrapper  card mb-2 p-0">
+                            <img src="/uploads/avatars/{{ $candidat->photo_de_profil }}" width="200"  class="img-thumbnail rounded" alt="Image utilisateur">
+                        </div> 
                         <input type="file" name="fic_profil" id="profile-photo" placeholder="Modifier" class="form-control button">
     
-                        <label for="newCompe[]" class="mt-5">💪 Compétences :</label>
+                        <label for="newCompe[]" class="mt-5"> <h3>💪Compétences :</h3></label>
                         <select name="newCompe[]" data-toggle="tooltip" id="comps" class="form-control"  data-placement="top" title="Cliquez pour retirer" multiple="multiple" >
                             <option value="infos_compet" disabled>--- Domaine - Compétence ---</option>
                                 @foreach ($competences as $competence)
                                         <option value="{{ $competence->domaine_metier."-".$competence->intitule_compe }}"  >{{ $competence->domaine_metier." - ".$competence->intitule_compe }}</option>
                                 @endforeach
                         </select>
-                        <label for="DomCompe">Nouvelle compétence ?</label>
+                        <label for="DomCompe"><h3>Nouvelle compétence ?</h3></label>
                         <br/>
                         <span class="EchecDom text-danger" style="display:none">Renseignez ce champs !!!</span>
                         <input type="text" name="DomCompe"  class="form-control mt-1 w-75" placeholder="Entrez le domaine de compétence" />
                         <div class="row mt-2 mb-2">
                             <span class="EchecCompe text-danger" style="display:none">Renseignez ce champs !!!</span>
                             <input type="text" name="int_compe" class="form-control col ms-3 mt-2 w-75" placeholder="Intitulé compétence...">
-                            <button class=" ms-3 fs-5 col ajCp fw-bold btn btn-primary">Ajouter</button>    
+                            <button class="button ms-3 fs-5 col ajCp fw-bold ">Ajouter</button>    
                         </div>
-                        <label for="newReg[]">🚩 Régions recherchées :</label>
+                        <label for="newReg[]"> <h3>🚩Régions recherchées :</h3></label>
                         <select name="newReg[]"  data-toggle="tooltip" class="form-control" data-placement="top" title="Cliquez pour retirer" id="regs" multiple="multiple">
                             <option value="infos_regions" disabled>--- Région ---</option>
                             @foreach ($regions as $region)
                                <option value="{{ $region->nom_region }}"  >{{ $region->nom_region }}</option>
                            @endforeach
                         </select>
-                        <label for="ajoutRegion">Nouvelle région ?</label>
+                        <label for="ajoutRegion"><h3>Nouvelle région ?</h3></label>
                         <br>
                         <span class="EchecReg text-danger" style="display:none">Renseignez ce champs !!!</span>
                         <div class="row mb-2">
                             <input type="text" name="ajoutRegion" class="col form-control mt-2 w-75" placeholder="Entrez la région..." />
-                            <button class="ms-3 fs-5 ajRe col fw-bold btn btn-primary">Ajouter</button>
+                            <button class="ms-3 fs-5 ajRe col fw-bold button">Ajouter</button>
                         </div>
                     </div>
     
                     <div class="col-7 candidate-infos">
                         <ul>
                             <li class="firstname">
-                                <label for="prenom">Prénom :</label>
+                                <label for="prenom"><h3>Prénom :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('prenom')
                                         {{ $message }}
@@ -64,7 +64,7 @@
                             </li>
                            
                             <li class="lastname">
-                                <label for="nom">Nom :</label>
+                                <label for="nom"><h3>Nom :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('nom')
                                         {{ $message }}
@@ -74,7 +74,7 @@
                             </li>
                             
                             <li class="status">
-                                <label for="status">Statut :</label>
+                                <label for="status"><h3>Statut :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('status')
                                         {{ $message }}
@@ -91,7 +91,7 @@
                             </li>
                            
                             <li class="birthdate">
-                                <label for="date_naissance">Date de naissance :</label>
+                                <label for="date_naissance"><h3>Date de naissance :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('date_naissance')
                                         {{ $message }}
@@ -101,14 +101,14 @@
                             </li>
                            
                             <li class="level-of-study">
-                                <label for="niveau_etude">Niveau d'études :</label>
+                                <label for="niveau_etude"><h3>Niveau d'études :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('niveau_etude')
                                         {{ $message }}
                                     @enderror
                                 </span>
                                 <select name="niveau_etude" id="level-of-study" class="form-control">
-                                    <option value="" disabled @if ($candidat->niv_etude=="")
+                                    <option value="" disabled @if (!empty($candidat->niv_etude))
                                         {{ "selected" }}
                                     @endif>--- Choisir niveau etude ---</option>
                                     <option value="< Bac" @if ($candidat->niv_etude=="< Bac")
@@ -133,7 +133,7 @@
                             </li>
                           
                             <li class="linkedin">
-                                <label for="linkedin">LinkedIn :</label>
+                                <label for="linkedin"><h3>LinkedIn :</h3></label>
                                 <span class="text-danger fs-4">
                                     @error('linkedin')
                                         {{ $message }}
@@ -148,11 +148,28 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
-                                <label for="email">📧 Email :</label>
+                                <label for="email"><h3>📧 Email :</h3></label>
                                 <input type="text" class="form-control" name="email" id="email" value="{{ $candidat->email }}">
                             </li>
                            
                         </ul>
+                        <div class="ms-4">
+                            <label for="newValeurs[]" class="mt-5"> <h3> Valeurs :</h3></label>
+                            <select name="newValeurs[]" data-toggle="tooltip" id="vals" class="form-control"  data-placement="top" title="Cliquez pour retirer" multiple="multiple" >
+                                <option value="infos_valeurs" disabled>--- Valeurs ---</option>
+                                    @foreach ($valeurs_candi as $valeur)
+                                            <option value="{{ $valeur->valeur }}"  >{{ $valeur->valeur }}</option>
+                                    @endforeach
+                            </select>
+                            <label for="AjoutValeurs"><h3>Nouvelle valeur ?</h3></label>
+                            <br/>
+                            <span class="EchecVal text-danger" style="display:none">Renseignez ce champs !!!</span>
+                            <div class="row mt-2 mb-2">
+                                <input type="text" name="AjoutValeurs" class="form-control col ms-3 mt-2 w-75" placeholder="Entrez la valeur ...">
+                                <button class=" ms-3 fs-5 col ajVl fw-bold button">Ajouter</button>    
+                            </div>
+                        </div>
+                       
                     </div>
                 </div>
             </section>
@@ -175,7 +192,7 @@
                 <div class="les_formations mb-2">
                     <p></p>
                     @foreach ($formations as $formation)
-                    <div class="row">
+                    <div class="row divforma">
                         <div class="col-12 card study">
                             <p class="card-title">
                                 {{$formation->intitule_forma}}
@@ -196,7 +213,7 @@
         
                             <div class="row">
                                 <div class="col-12 actions" id={{ $formation->id_forma }} >
-                                    <a href="" class="button AjoutFormaBut blue1">✏ Modifier</a>
+                                    <a href="" class="button AjoutFormaBut blue1" id="mod" >✏ Modifier</a>
                                     <a href="" class="button danger supforma">🚽 Supprimer</a>
                                 </div>
                             </div>
@@ -224,8 +241,8 @@
             </div>
         </form>
             
-        <form action="MajExpe" method="post">
-            @csrf
+        <form action="" method="">
+            
             <section id="experiences" class="container">
                 <div class="row">
                     <div class="col-12 mb-5">
@@ -233,42 +250,55 @@
                     </div>
                 </div>
     
-                <div class="row">
-                    <div class="col-12 card study">
-                        <p class="card-title">
-                            Vendeur polyvalent
-                        </p>
-    
-                        <div class="study-infos infos-inline">
-                            <span class="date">📅 06/2018 - 08/2018</span>
-                            <span class="contract-type">📝 Intérim</span>
-                            <span class="city">🚩 Morlaix (29) - France</span>
-                            <span class="domain">💼 Commerce - Vente au détail</span>
-                            <span class="company">🏢 Chez Dédé</span>
-                        </div>
-    
-                        <p class="description mt-5">
-                            J'ai vendu des oranges, des avocats, des goyaves bio...
-                        </p>
-    
-                        <div class="row">
-                            <div class="col-12 actions">
-                                <a href="" class="button blue1">✏ Modifier</a>
-                                <a href="" class="button danger">🚽 Supprimer</a>
+                <div class="les_experiences mb-2">
+                    <p></p>
+                    @foreach ($experiences as $experience)
+                        <div class="row divExpe">
+                            <div class="col-12 card study">
+                                <p class="card-title">
+                                    {{
+                                        $experience->intitule_expe
+                                    }}
+                                </p>
+                                <div class="study-infos infos-inline">
+                                    <span class="date"> 📅 @php
+                                        echo date_format(date_create($experience->date_deb_expe),"d/m/Y")." - ".date_format(date_create($experience->date_fin_expe),"d/m/Y");
+                                    @endphp</span>
+                                    <span class="type_contrat">👨‍🎓 {{$experience->type_contrat }}</span>
+                                    <span class="city">🚩 {{ $experience->ville_expe." - ".$experience->pays_expe }}</span>
+                                    <span class="domain">💼 {{ $experience->domaine }}</span>
+                                    <span class="entreprise"> 🏢 {{ $experience->entreprise}}</span>
+                                </div>
+            
+                                <p class="description mt-5">
+                                    {{ $experience->description_expe }}
+                                </p>
+            
+                                <div class="row">
+                                    <div class="col-12 actions" id={{ $experience->id_experience_pro }} >
+                                        <a href="" class="button AjoutExpeBut blue1" id="mod" >✏ Modifier</a>
+                                        <a href="" class="button danger supExpe">🚽 Supprimer</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
+
+                <div class="experience_nouvelle">
+                    <p></p>
+                </div>
+               
     
                 <div class="row">
                     <div class="col-12 add">
-                        <a href="" class="button success">+ Ajouter une expérience</a>
+                        <button class="button AjoutExpeBut success">+ Ajouter une experience</button>
                     </div>
                 </div>
             </section>
             <div>   
                 <div class="validation">
-                    <input type="submit" value="💾 Enregistrer" title="Enregistrer mes modifs !" class=" me-5 button success">
+                    <input type="submit" value="💾 Enregistrer" title="Enregistrer mes modifs !" class=" experience_candi me-5 button success">
                 </div>
             </div>
         </form>
@@ -282,14 +312,21 @@
         echo "let les_forma=";
         echo json_encode($formations);
         echo ";";
+        echo "let les_expe=";
+        echo json_encode($experiences);
+        echo ";";
         echo "</script>";
     @endphp
     <script>
         $(document).ready(function()
         {
-            editionCompe();
+        editionCompe();
         editionRegion();
+        editionValeur();
+
         let tabmodifer = [];
+        let tabmodifer2 = [];
+        //focus page active
         let accueil = document.querySelector("#accueil");
         let matching = document.querySelector("#matching");
         let profil = document.querySelector("#profil");
@@ -300,24 +337,38 @@
         profil.classList.add("active");
         AdEntre.classList.remove("active");
         AdCandi.classList.remove("active");
+        //gestion infos personelles
         let CompeAddBut = document.querySelector(".ajCp");
-        CompeAddBut.addEventListener('click',function(e){
-            e.preventDefault();
-            let champDom = document.querySelector("input[name='DomCompe']");
-            let champCompe = document.querySelector("input[name='int_compe']");
-            if(champDom.value=="")
-            {
-                document.querySelector(".EchecDom").style.display ="inline";
+    CompeAddBut.addEventListener('click',function(e){
+        e.preventDefault();
+        let champDom = document.querySelector("input[name='DomCompe']");
+        let champCompe = document.querySelector("input[name='int_compe']");
+        if(champDom.value=="")
+        {
+            document.querySelector(".EchecDom").style.display ="inline";
 
-            }
-            else if(champCompe.value=="")
+        }
+        else if(champCompe.value=="")
+        {
+            document.querySelector(".EchecDom").style.display ="none";
+            document.querySelector(".EchecCompe").style.display ="inline";
+        }
+        else
+        {
+            let selectCompe = document.querySelector("select[name='newCompe[]']");
+            let verif_doublon = false;
+            for(let selOption of selectCompe.options)
             {
-                document.querySelector(".EchecDom").style.display ="none";
-                document.querySelector(".EchecCompe").style.display ="inline";
+                if(selOption.value.toLowerCase()==(champDom.value+"-"+champCompe.value).toLowerCase())
+                {
+                    verif_doublon = true;
+                    document.querySelector(".EchecVal").innerHTML = "Valeur déja présente";
+                    document.querySelector(".EchecVal").style.display = "inline";
+                    break;
+                }
             }
-            else
+            if(!verif_doublon)
             {
-                let selectCompe = document.querySelector("select[name='newCompe[]']");
                 let op = document.createElement("option");
                 op.value=champDom.value+"-"+champCompe.value;
                 op.innerHTML = champDom.value+" - "+champCompe.value;
@@ -328,47 +379,112 @@
                 document.querySelector(".EchecDom").style.display ="none";
                 document.querySelector(".EchecCompe").style.display ="none";
             }
-        });
-        
-        let RegionAddBut = document.querySelector(".ajRe");
-        RegionAddBut.addEventListener('click',function(e){
-            e.preventDefault();
-            let ChampReg = document.querySelector("input[name='ajoutRegion']");
-            if(ChampReg.value=="")
+        }
+    });
+    let ValeursAddBut = document.querySelector(".ajVl");
+        ValeursAddBut.addEventListener('click',function(e){
+        e.preventDefault();
+        let ChampVal = document.querySelector("input[name='AjoutValeurs']");
+        if(ChampVal.value=="")
+        {
+            document.querySelector(".EchecVal").style.display = "inline";
+        }
+        else
+        {
+            let selectVal = document.querySelector("select[name='newValeurs[]']");
+            let verif_doublon = false;
+            for(let selOption of selectVal.options)
             {
-                document.querySelector(".EchecReg").style.display = "inline";
+                if(selOption.value.toLowerCase()==ChampVal.value.toLowerCase())
+                {
+                    verif_doublon = true;
+                    document.querySelector(".EchecVal").innerHTML = "Valeur déja présente";
+                    document.querySelector(".EchecVal").style.display = "inline";
+                    break;
+                }
             }
-            else
+            if(!verif_doublon)
             {
-                let selectReg = document.querySelector("select[name='newReg[]']");
                 let op = document.createElement("option");
-                op.value = ChampReg.value;
-                op.innerHTML = ChampReg.value
-                selectReg.add(op);
-                ChampReg.value="";
-                editionRegion();
-                document.querySelector(".EchecReg").style.display = "none";
+                op.value = ChampVal.value;
+                op.innerHTML = ChampVal.value
+                selectVal.add(op);
+                ChampVal.value="";
+                editionValeur();
+                document.querySelector(".EchecVal").style.display = "none";
             }
-        });
+        }
+    });
+        traitementInfosPersos();
         let valider_info_per = document.querySelector(".infs_pers")
-        valider_info_per.addEventListener('click',function(e){
-            for(let sel of document.querySelector("select[name='newCompe[]']").options)
+    valider_info_per.addEventListener('click',function(e){
+        for(let sel of document.querySelector("select[name='newCompe[]']").options)
+        {
+            if(sel.disabled==false)
             {
-                if(sel.disabled==false)
-                {
-                    sel.selected = "selected";
-                }
+                sel.selected = "selected";
             }
-            for(let sel of document.querySelector("select[name='newReg[]']").options)
+        }
+        for(let sel of document.querySelector("select[name='newReg[]']").options)
+        {
+            if(sel.disabled==false)
             {
-                if(sel.disabled==false)
-                {
-                    sel.selected = "selected";
-                }
+                sel.selected = "selected";
             }
+        }
+        for(let sel of document.querySelector("select[name='newValeurs[]']").options)
+        {
+            if(sel.disabled==false)
+            {
+                sel.selected = "selected";
+            }
+        }
+    });
+        //enregistrement experiences modifiées
+        traitementAjouExpe(tabmodifer2,les_expe);
+        $(".experience_candi").click(function(e){
+            e.preventDefault();
+            let chaine = "";
+            for(let tab in tabmodifer2)
+            {
+                chaine+=JSON.stringify(tabmodifer2[tab])+"~-";
+            }
+            $.ajax({
+                type:"GET",
+                url:"/EnregistrerExpe/?tabmodifer2="+chaine,
+                success: function(res){
+                    if(res)
+                    {
+                        console.log(res);
+                        tabmodifer = [];
+                        window.location.reload();
+                    }
+                    else
+                    {
+                        alert("Echec de l'enregistrement");
+                    }
+                }
+            });
         });
+        let suppriboutonExpe = $(".supExpe");
+       $.each(suppriboutonExpe,function(key,value){
+        value.addEventListener('click',function(e){
+            e.preventDefault();
+            let id_experience = e.target.parentNode.attributes["id"].nodeValue;
+            $.ajax({
+                type:"GET",
+                url:"/SupprimerExpe/?idexpe="+id_experience,
+                success:function(res){
+                    if(res)
+                    {
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+       });
         //formation
-        traitementAjouForma(tabmodifer);
+        traitementAjouForma(tabmodifer,les_forma);
         $(".formation_candi").click(function(e){
             e.preventDefault();
             let chaine = "";
@@ -393,8 +509,8 @@
                 }
             });
         });
-        let suppriboutons = $(".supforma");
-       $.each(suppriboutons,function(key,value){
+        let suppriboutonsForma = $(".supforma");
+       $.each(suppriboutonsForma,function(key,value){
         value.addEventListener('click',function(e){
             e.preventDefault();
             let id_formation = e.target.parentNode.attributes["id"].nodeValue;

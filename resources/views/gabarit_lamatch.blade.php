@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="css/header.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/home.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/profile-candidate.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/pages/matching-candidate.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/circle-progress.css" type="text/css" media="all" >
+    <link rel="stylesheet" href="css/pages/company.css" type="text/css" media = "all" >
     <script type="text/javascript" src="js/fonctions.js"></script>
 </head>
 
@@ -46,7 +49,7 @@
                         </li>
 
                         <li>
-                            <a title="Accéder au Matching !" href="matching-candidate.html" id="matching" class="menu-link button">
+                            <a title="Accéder au Matching !" href="matching" id="matching" class="menu-link button">
                                 ⚡ Matching !
                             </a>
                         </li>
