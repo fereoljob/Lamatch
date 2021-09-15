@@ -39,7 +39,6 @@ Un reel resenti, je suis pas sur d'avoir fait le bon choix dans pas mal d'aspect
 Eh oui les fonctionnalités des pages d'administration ne sont pas terminés (fonctionnalités ajout,suppression et modification), ces pages auraient pu etre gérées avec les autres pages et fonctionnalités de base dans la limite du temps qui a été donné mais due a des contraintes de temps (job etudiant) elles font donc parties de ce que j'aurais faire avec plus de temps.
 
 J'ai pas specialenment ressenti un blocage par rapport une fonctionnalité( parmis celles de base) à gérer dans la globalité du test.
-Pour le deploiement, creer une base de données, Lamatch dans mon cas, php artisan migrate dans le terminal, php artisan db:seed pour inserer des valeurs dans la base/ ou importer fichier sql,
 
 
 
