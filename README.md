@@ -17,7 +17,7 @@
 * Dans le navigateur localhost:8000
 * Se connecter avec un compte Candidat: identifiant: fereoljob, Password: Motdepasse
 * Se connecter avec un compte Entreprise: identifiant: lamacompta, Password: Motdepasse
-* Se connecter en tant qu'admin: identifiant: admin, password:Admin
+* Se connecter en tant qu'admin: identifiant: Admin, password:Admin
  
 
 
