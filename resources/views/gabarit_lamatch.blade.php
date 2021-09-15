@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="css/pages/home.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/profile-candidate.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/pages/matching-candidate.css" type="text/css" media="all">
+    <link rel="stylesheet" href ="css/pages/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href ="css/pages/candidate.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/pages/admin/candidates.css" type="text/css" media="all" >
+    <link rel="stylesheet" href="css/pages/admin/companies.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/circle-progress.css" type="text/css" media="all" >
     <link rel="stylesheet" href="css/pages/company.css" type="text/css" media = "all" >
     <script type="text/javascript" src="js/fonctions.js"></script>

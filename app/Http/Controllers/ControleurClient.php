@@ -398,7 +398,7 @@ class ControleurClient extends Controller
             {      
                 if(!(ControleurClient::appartient($tab_domaine,$competences[$key]->domaine_metier,null)))
                 {
-                    array_push($tab_domaine,$value->domaine);
+                    array_push($tab_domaine,$value->domaine_metier);
                 }
             }
             foreach($lesentreprises as $key=>$entreprise)
@@ -491,7 +491,7 @@ class ControleurClient extends Controller
                 {      
                     if(!(ControleurClient::appartient($tab_domaine,$competences[$key]->domaine_metier,null)))
                     {
-                        array_push($tab_domaine,$value->domaine);
+                        array_push($tab_domaine,$value->domaine_metier);
                     }
                 }
                 // en supposant que une entreprise n'opere que dans un seul type de domaine
