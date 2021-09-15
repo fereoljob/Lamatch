@@ -188,6 +188,12 @@ class table_utilisateurs extends Seeder
                 "email"=>"job.fereol@email.com",
                 "password"=>"Motdepasse",
                 "statut"=>"Candidat"
+            ],
+            [
+                "username"=>"Admin",
+                "email"=>"admin@email.com",
+                "password"=>"Admin",
+                "statut"=>"Admin"
             ]
         ]);
     }
